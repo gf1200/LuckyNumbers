@@ -40,6 +40,13 @@ html {
    text-shadow: 1px 1px 3px #5eff00;
 }
 
+.reset{
+    width: 70px;
+    height: 70px;
+    margin: .8rem 265px;
+    border-radius: 50%;
+}
+
 .generator:hover {
     color: rgb(68, 27, 5);
     text-shadow: 1px 1px 3px #ff7b00;

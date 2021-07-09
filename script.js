@@ -1,7 +1,6 @@
 const randomNumber = (closingNumber) => {
-        return Math.floor((Math.random() * closingNumber) + 1)
+    return Math.floor((Math.random() * closingNumber) + 1)
 };
-
 
 
 const insertNumber = (closingNumber) => {
@@ -27,3 +26,17 @@ const insertNumber = (closingNumber) => {
 };
 
 insertNumber(49)
+
+const reset = () => {
+
+    const resetButton = document.querySelector(".reset")
+    resetButton.addEventListener("click", () => {
+
+        const ballElement = document.querySelectorAll(".balls > div")
+        ballElement.forEach(element => element.textContent = "-" )
+
+    insertNumber(49)
+    });
+};
+
+reset()
