@@ -40,11 +40,15 @@ html {
    text-shadow: 1px 1px 3px #5eff00;
 }
 
-.reset{
+.reset {
     width: 70px;
     height: 70px;
     margin: .8rem 265px;
     border-radius: 50%;
+}
+
+.hidden {
+    display: none;
 }
 
 .generator:hover {

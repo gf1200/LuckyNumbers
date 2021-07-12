@@ -15,6 +15,20 @@ const insertNumber = (closingNumber) => {
         if (numbers.indexOf(number) === -1 && numbers.length < 6) {
 
             numbers.push(number)
+
+            if (numbers[5] !== undefined) {
+
+                document.querySelector(".reset")
+                .classList.remove("hidden")
+
+                } else {
+
+                const resetButton = document.querySelector(".reset")
+                resetButton.addEventListener("click", () => {
+                    resetButton.classList.add("hidden")
+                    });
+                };
+
             const ballElement = document.querySelector(`.ball_${numbers.length}`)
             ballElement.textContent = numbers[numbers.length -1]
 
