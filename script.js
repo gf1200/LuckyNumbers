@@ -1,47 +1,63 @@
-const generatorButton = document.querySelector(".generator")
+{
+    const data = {
+        numbers: [],
+        limitNumber: 49,
+        selectors: {
+            ballsElements: ".ball",
+            generator: ".generator",
+            reset: ".reset"
+        }
+    };
 
-const resetButton = document.querySelector(".reset")
-resetButton.addEventListener("click", () => {
-        reset()
-});
+    let {numbers, limitNumber, selectors: {ballsElements},
+                               selectors: {generator},
+                               selectors: {reset}} = data;
 
-function randomNumber(closingNumber) {
-    return Math.floor((Math.random() * closingNumber) + 1)
-};
+    function init() {
+        document.querySelector(generator).addEventListener("click", displayNumber);
+        document.querySelector(reset).addEventListener("click", resetNumbers);
+        resetNumbers();
+    };
 
-function insertNumber() {
-    const numbers = [];
+    function displayNumber() {
+        const ballsLimitNr = numbers.length < 6;
 
-    generatorButton.addEventListener("click",  click = () => {
-        const number = randomNumber(49);
-
-        if (numbers.indexOf(number) === -1 && numbers.length < 6) {
-            numbers.push(number)
-
-            if (numbers[5] !== undefined) {
-                resetButton.classList.remove("hidden")
-
-                } else {
-                resetButton.addEventListener("click", () => {
-                    resetButton.classList.add("hidden")
-                    });
-                };
-
-            const ballElement = document.querySelector(`.ball_${numbers.length}`)
-            ballElement.textContent = numbers[numbers.length -1]
-
-        } else if (numbers.length < 6) {
-            click()
+        if (ballsLimitNr) {
+            const number = randomNumber(limitNumber);
+            putNumber(number);
+            printNumber();
+            displayResetBtn();
         };
-    });
-};
+    };
 
-insertNumber()
+    function resetNumbers() {
+        document.querySelectorAll(ballsElements).forEach(element => element.textContent = "-" )
+        document.querySelector(reset).classList.add("hidden");
+        numbers.length = 0;
+    };
 
-function reset() {
-    const ballElements = document.querySelectorAll(".balls > div")
-    ballElements.forEach(element => element.textContent = "-" )
+    function randomNumber(limitNumber) {
+        return Math.floor((Math.random() * limitNumber) + 1)
+    };
 
-    insertNumber()
-};
+    function putNumber(number) {
+        if (!(numbers.includes(number))) {
+            numbers.push(number);
+        } else {
+            displayNumber();
+        };
+    };
 
+    function printNumber() {
+        document.querySelector(`.ball_${numbers.length}`).textContent = numbers[numbers.length -1];
+    };
+
+    function displayResetBtn() {
+        const lastBall = numbers.length === 6;
+        if (lastBall) {
+            document.querySelector(reset).classList.remove("hidden");
+        };
+    };
+}
+
+init();
