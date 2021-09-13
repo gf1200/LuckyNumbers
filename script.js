@@ -7,18 +7,18 @@
             ballsElements: '.ball',
             numbersContainer: '.results',
             generatorBtn: '.generator',
-            resetBtn: '.reset'
+            nextBtn: '.next'
         }
     };
 
     let {numbers, counter, limitNumber, selectors: {ballsElements},
                                         selectors: {numbersContainer},
                                         selectors: {generatorBtn},
-                                        selectors: {resetBtn}} = data;
+                                        selectors: {nextBtn}} = data;
 
     function init() {
         document.querySelector(generatorBtn).addEventListener("click", displayBallNumber);
-        document.querySelector(resetBtn).addEventListener("click", resetBallNumbersAndDisplayToUI);
+        document.querySelector(nextBtn).addEventListener("click", putBallNumbersIntoList);
     };
 
     function displayBallNumber() {
@@ -32,11 +32,11 @@
         };
     };
 
-    function resetBallNumbersAndDisplayToUI() {
+    function putBallNumbersIntoList() {
         document.querySelectorAll(ballsElements).forEach(element => element.textContent = "-" )
-        document.querySelector(resetBtn).classList.add("hidden");
+        document.querySelector(nextBtn).classList.add("hidden");
         counter++;
-        displayNumbersToUI(counter);
+        displayNumbersIntoList(counter);
         numbers.length = 0;
     };
 
@@ -63,11 +63,11 @@
     function displayResetBtn() {
         const lastBall = numbers.length === 6;
         if (lastBall) {
-            document.querySelector(resetBtn).classList.remove("hidden");
+            document.querySelector(nextBtn).classList.remove("hidden");
         };
     };
 
-    function displayNumbersToUI(itemNumber) {
+    function displayNumbersIntoList(itemNumber) {
         element = `<div class="numbers"><span class="counter">${itemNumber}:</span>${numbers.join('  .  ')}</div>`;
         document.querySelector(numbersContainer).insertAdjacentHTML('afterbegin', element);
     };
