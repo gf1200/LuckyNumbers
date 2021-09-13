@@ -1,5 +1,5 @@
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 * {
@@ -26,18 +26,18 @@ html {
 }
 
 .generator {
-   width: 200px;
-   height: 50px;
-   margin: 2rem 200px;
-   cursor: pointer;
-   padding: 1rem;
-   border-style: none;
-   border-radius: 1rem;
-   background-color: transparent;
-   border: #5eff00 solid 0.2rem;
-   font-family: cambria, sans-serif;
-   font-size: 1.8rem;
-   text-shadow: 1px 1px 3px #5eff00;
+    width: 200px;
+    height: 50px;
+    margin: 2rem 200px;
+    cursor: pointer;
+    padding: 1rem;
+    border-style: none;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: #5eff00 solid 0.2rem;
+    font-family: cambria, sans-serif;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 3px #5eff00;
 }
 
 .reset {
@@ -63,18 +63,50 @@ html {
     justify-content: space-between;
 }
 
-.balls > div {
+.balls>div {
     width: 70px;
     height: 70px;
     text-align: center;
     line-height: 220%;
     color: rgb(42, 97, 12);
-    text-shadow: 1px 1px 3px #5eff00;;
+    text-shadow: 1px 1px 3px #5eff00;
+    ;
     font-size: 2.8rem;
     font-weight: 700;
     font-family: cambria, sans-serif;
     border: rgb(0, 0, 0) solid 0.2rem;
     border-radius: 50%;
-    box-shadow: 1px 1px 3px #5eff00;;
+    box-shadow: 1px 1px 3px #5eff00;
+    ;
     background-color: rgb(248, 252, 6);
+}
+
+.buttons {
+    height: 180px;
+}
+
+.results {
+    width: 75%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.numbers {
+    color: rgb(68, 27, 5);
+    position: relative;
+    padding: 8px;
+    margin: 1.2rem;
+    font-family: cambria, sans-serif;
+    font-size: 2rem;
+    letter-spacing: 5px;
+    text-align: right;
+    border: solid 1px rgb(231, 223, 223);
+    border-radius: 5px;
+}
+
+.counter {
+    position: absolute;
+    left: 1rem;
+    color: rgb(42, 97, 12);
+    letter-spacing: normal;
 }
