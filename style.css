@@ -47,7 +47,7 @@ html {
     border-radius: 50%;
 }
 
-.hidden {
+.hide {
     display: none;
 }
 
@@ -63,7 +63,7 @@ html {
     justify-content: space-between;
 }
 
-.balls>div {
+.ball {
     width: 70px;
     height: 70px;
     text-align: center;
@@ -81,8 +81,8 @@ html {
     background-color: rgb(248, 252, 6);
 }
 
-.buttons {
-    height: 180px;
+.drowning {
+    height: 100px;
 }
 
 .results {

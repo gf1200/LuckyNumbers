@@ -3,45 +3,55 @@
         numbers: [],
         counter: 0,
         limitNumber: 49,
+        ballsNumber: 6,
         selectors: {
             ballsElements: '.ball',
             numbersContainer: '.results',
             generatorBtn: '.generator',
-            nextBtn: '.next'
+            nextBtn: '.next',
+            hide: 'hide'
         }
     };
 
-    let {numbers, counter, limitNumber, selectors: {ballsElements},
-                                        selectors: {numbersContainer},
-                                        selectors: {generatorBtn},
-                                        selectors: {nextBtn}} = data;
+    let {numbers, counter, limitNumber, ballsNumber, selectors: {ballsElements},
+                                                     selectors: {numbersContainer},
+                                                     selectors: {generatorBtn},
+                                                     selectors: {nextBtn},
+                                                     selectors: {hide}} = data;
 
     function init() {
-        document.querySelector(generatorBtn).addEventListener("click", displayBallNumber);
-        document.querySelector(nextBtn).addEventListener("click", putBallNumbersIntoList);
+        document.querySelector(generatorBtn).addEventListener("click", generateNumbers);
+        document.querySelector(nextBtn).addEventListener("click", displayNumbersList);
     };
 
-    function displayBallNumber() {
-        const ballsLimitNr = numbers.length < 6;
+    function generateNumbers() {
+        document.querySelector(generatorBtn).classList.add(hide);
 
-        if (ballsLimitNr) {
-            const number = randomNumber(limitNumber);
-            putNumberToData(number);
-            printBallNumber();
-            displayResetBtn();
+        for (let i = 0; i < ballsNumber; i++) {
+            setTimeout(displayBallNumber, `${(i + 1) * 700}`);
         };
     };
 
-    function putBallNumbersIntoList() {
-        document.querySelectorAll(ballsElements).forEach(element => element.textContent = "-" )
-        document.querySelector(nextBtn).classList.add("hidden");
-        counter++;
-        displayNumbersIntoList(counter);
-        numbers.length = 0;
+    function displayBallNumber() {
+        const number = getRandomNumber(limitNumber);
+
+        putNumberToData(number);
+        printBallNumber();
+        displayNextBtn();
     };
 
-    function randomNumber(limitNumber) {
+
+    function displayNumbersList() {
+        counter++;
+
+        putNumbersIntoList(counter);
+        resetNumbers();
+        generateNumbers();
+    };
+
+    function getRandomNumber(limitNumber) {
         let number = Math.floor((Math.random() * limitNumber) + 1);
+
         if (number < 10) {
             number = '0'+ number;
         };
@@ -60,17 +70,23 @@
         document.querySelector(`.ball_${numbers.length}`).textContent = numbers[numbers.length -1];
     };
 
-    function displayResetBtn() {
-        const lastBall = numbers.length === 6;
+    function displayNextBtn() {
+        const lastBall = numbers.length === ballsNumber;
+
         if (lastBall) {
-            document.querySelector(nextBtn).classList.remove("hidden");
+            document.querySelector(nextBtn).classList.remove(hide);
         };
     };
 
-    function displayNumbersIntoList(itemNumber) {
+    function putNumbersIntoList(itemNumber) {
         element = `<div class="numbers"><span class="counter">${itemNumber}:</span>${numbers.join('  .  ')}</div>`;
         document.querySelector(numbersContainer).insertAdjacentHTML('afterbegin', element);
     };
-}
 
+    function resetNumbers() {
+        document.querySelectorAll(ballsElements).forEach(element => element.textContent = "-" );
+        document.querySelector(nextBtn).classList.add(hide);
+        numbers.length = 0;
+    };
+}
 init();
