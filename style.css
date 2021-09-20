@@ -28,7 +28,6 @@ html {
 .generator {
     width: 200px;
     height: 50px;
-    margin: 2rem 200px;
     cursor: pointer;
     padding: 1rem;
     border-style: none;
@@ -43,7 +42,6 @@ html {
 .next {
     width: 70px;
     height: 70px;
-    margin: .8rem 265px;
     border-radius: 50%;
 }
 
@@ -60,12 +58,14 @@ html {
 .balls {
     padding: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .ball {
     width: 70px;
     height: 70px;
+    margin: 1rem;
     text-align: center;
     line-height: 220%;
     color: rgb(42, 97, 12);
@@ -77,12 +77,13 @@ html {
     border: rgb(0, 0, 0) solid 0.2rem;
     border-radius: 50%;
     box-shadow: 1px 1px 3px #5eff00;
-    ;
     background-color: rgb(248, 252, 6);
 }
 
 .drowning {
     height: 100px;
+    display: flex;
+    justify-content: center;
 }
 
 .results {
@@ -94,7 +95,7 @@ html {
 .numbers {
     color: rgb(68, 27, 5);
     position: relative;
-    padding: 8px;
+    padding: .5rem .5rem .5rem 4rem;
     margin: 1.2rem;
     font-family: cambria, sans-serif;
     font-size: 2rem;

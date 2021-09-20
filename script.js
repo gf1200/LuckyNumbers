@@ -1,33 +1,44 @@
 {
     const data = {
         numbers: [],
-        counter: 0,
-        limitNumber: 49,
-        ballsNumber: 6,
-        selectors: {
-            ballsElements: '.ball',
-            numbersContainer: '.results',
-            generatorBtn: '.generator',
-            nextBtn: '.next',
-            hide: 'hide'
-        }
+        counter: 0
     };
 
-    let {numbers, counter, limitNumber, ballsNumber, selectors: {ballsElements},
-                                                     selectors: {numbersContainer},
-                                                     selectors: {generatorBtn},
-                                                     selectors: {nextBtn},
-                                                     selectors: {hide}} = data;
+    const status = {
+        limitNumber: 49,
+        amountOfBalls: 6
+    };
+
+    let {counter} = data;
+    const {numbers} = data;
+    const {limitNumber, amountOfBalls} = status;
+
+    const ballsContainer = '.balls';
+    const ballsElements = '.ball';
+    const numbersContainer = '.results';
+    const generatorBtn = '.generator';
+    const nextBtn = '.next';
+    const hide = 'hide';
 
     function init() {
         document.querySelector(generatorBtn).addEventListener("click", generateNumbers);
         document.querySelector(nextBtn).addEventListener("click", displayNumbersList);
+        createBallElement();
+    };
+
+    function createBallElement() {
+        for (let i = 0; i < amountOfBalls; i++) {
+            const element = document.createElement('div');
+            element.className = `ball_${i + 1} ball`;
+            element.textContent = '-';
+            document.querySelector(ballsContainer).appendChild(element);
+        };
     };
 
     function generateNumbers() {
         document.querySelector(generatorBtn).classList.add(hide);
 
-        for (let i = 0; i < ballsNumber; i++) {
+        for (let i = 0; i < amountOfBalls; i++) {
             setTimeout(displayBallNumber, `${(i + 1) * 700}`);
         };
     };
@@ -40,7 +51,6 @@
         displayNextBtn();
     };
 
-
     function displayNumbersList() {
         counter++;
 
@@ -50,28 +60,31 @@
     };
 
     function getRandomNumber(limitNumber) {
-        let number = Math.floor((Math.random() * limitNumber) + 1);
+       return Math.floor((Math.random() * limitNumber) + 1);
+    };
 
-        if (number < 10) {
-            number = '0'+ number;
-        };
+    function addZeroToUnity(number) {
+        (number < 10) ? number = `0${number}` : number;
         return number;
     };
 
     function putNumberToData(number) {
-        if (!(numbers.includes(number))) {
-            numbers.push(number);
+        const uniqueNumber = !(numbers.includes(addZeroToUnity(number)));
+
+        if (uniqueNumber) {
+            numbers.push(addZeroToUnity(number));
         } else {
             displayBallNumber();
         };
     };
 
     function printBallNumber() {
-        document.querySelector(`.ball_${numbers.length}`).textContent = numbers[numbers.length -1];
+        const number = numbers[numbers.length -1];
+        document.querySelector(`.ball_${numbers.length}`).textContent = number;
     };
 
     function displayNextBtn() {
-        const lastBall = numbers.length === ballsNumber;
+        const lastBall = numbers.length === amountOfBalls;
 
         if (lastBall) {
             document.querySelector(nextBtn).classList.remove(hide);
