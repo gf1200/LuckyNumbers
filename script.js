@@ -19,9 +19,11 @@
     const generatorBtn = '.generator';
     const nextBtn = '.next';
     const hide = 'hide';
+    const clean = '.clean'
 
     function init() {
         document.querySelector(generatorBtn).addEventListener("click", generateNumbers);
+        document.querySelector(clean).addEventListener("click", cleanAll);
         document.querySelector(nextBtn).addEventListener("click", displayNumbersList);
         createBallElement();
     };
@@ -37,15 +39,21 @@
 
     function generateNumbers() {
         document.querySelector(generatorBtn).classList.add(hide);
-
         for (let i = 0; i < amountOfBalls; i++) {
-            setTimeout(displayBallNumber, `${(i + 1) * 700}`);
+            setTimeout(displayBallNumber, `${(i + 1) * 600}`);
         };
+    };
+
+    function cleanAll() {
+        counter = 0;
+        document.querySelector(numbersContainer).innerHTML = '';
+        document.querySelector(generatorBtn).classList.remove(hide);
+        document.querySelector(clean).classList.add(hide);
+        resetNumbers();
     };
 
     function displayBallNumber() {
         const number = getRandomNumber(limitNumber);
-
         putNumberToData(number);
         printBallNumber();
         displayNextBtn();
@@ -53,7 +61,6 @@
 
     function displayNumbersList() {
         counter++;
-
         putNumbersIntoList(counter);
         resetNumbers();
         generateNumbers();
@@ -82,7 +89,10 @@
 
     function displayNextBtn() {
         const lastBall = numbers.length === amountOfBalls;
-        if (lastBall) return document.querySelector(nextBtn).classList.remove(hide);
+        if (lastBall) {
+            document.querySelector(nextBtn).classList.remove(hide);
+            document.querySelector(clean).classList.remove(hide);
+        };
     };
 
     function putNumbersIntoList(itemNumber) {
@@ -93,6 +103,7 @@
     function resetNumbers() {
         document.querySelectorAll(ballsElements).forEach(element => element.textContent = "-" );
         document.querySelector(nextBtn).classList.add(hide);
+        document.querySelector(clean).classList.add(hide);
         numbers.length = 0;
     };
 }
