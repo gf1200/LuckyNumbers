@@ -48,7 +48,6 @@
         counter = 0;
         document.querySelector(numbersContainer).innerHTML = '';
         document.querySelector(generatorBtn).classList.remove(hide);
-        document.querySelector(clean).classList.add(hide);
         resetNumbers();
     };
 
@@ -56,7 +55,7 @@
         const number = getRandomNumber(limitNumber);
         putNumberToData(number);
         printBallNumber();
-        displayNextBtn();
+        displayNextAndCleanBtn();
     };
 
     function displayNumbersList() {
@@ -87,7 +86,7 @@
         document.querySelector(`.ball_${numbers.length}`).textContent = number;
     };
 
-    function displayNextBtn() {
+    function displayNextAndCleanBtn() {
         const lastBall = numbers.length === amountOfBalls;
         if (lastBall) {
             document.querySelector(nextBtn).classList.remove(hide);
