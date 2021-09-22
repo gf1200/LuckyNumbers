@@ -49,6 +49,7 @@
         putNumberToData(number);
         printBallNumber();
         displayNextBtn();
+        console.log(numbers)
     };
 
     function displayNumbersList() {
@@ -65,7 +66,7 @@
 
     function addZeroToUnity(number) {
         (number < 10) ? number = `0${number}` : number;
-        return number;
+        return number.toString();
     };
 
     function putNumberToData(number) {
