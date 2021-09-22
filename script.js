@@ -49,7 +49,6 @@
         putNumberToData(number);
         printBallNumber();
         displayNextBtn();
-        console.log(numbers)
     };
 
     function displayNumbersList() {
@@ -71,12 +70,9 @@
 
     function putNumberToData(number) {
         const uniqueNumber = !(numbers.includes(addZeroToUnity(number)));
+        if (uniqueNumber) return numbers.push(addZeroToUnity(number));
 
-        if (uniqueNumber) {
-            numbers.push(addZeroToUnity(number));
-        } else {
-            displayBallNumber();
-        };
+        return  displayBallNumber();
     };
 
     function printBallNumber() {
@@ -86,10 +82,7 @@
 
     function displayNextBtn() {
         const lastBall = numbers.length === amountOfBalls;
-
-        if (lastBall) {
-            document.querySelector(nextBtn).classList.remove(hide);
-        };
+        if (lastBall) return document.querySelector(nextBtn).classList.remove(hide);
     };
 
     function putNumbersIntoList(itemNumber) {
