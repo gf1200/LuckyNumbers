@@ -69,15 +69,19 @@
        return Math.floor((Math.random() * limitNumber) + 1);
     };
 
-    function addZeroToUnity(number) {
-        (number < 10) ? number = `0${number}` : number;
+    function addZeroIfUnity(number) {
+        const unityNumber = number < 10;
+        if (unityNumber) {
+            return number = `0${number}`;
+        };
         return number.toString();
     };
 
     function putNumberToData(number) {
-        const uniqueNumber = !(numbers.includes(addZeroToUnity(number)));
-        if (uniqueNumber) return numbers.push(addZeroToUnity(number));
-
+        const uniqueNumber = !(numbers.includes(addZeroIfUnity(number)));
+        if (uniqueNumber) {
+            return numbers.push(addZeroIfUnity(number));
+        };
         return  displayBallNumber();
     };
 
