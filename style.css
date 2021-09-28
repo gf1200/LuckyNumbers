@@ -113,3 +113,10 @@ html {
     color: rgb(42, 97, 12);
     letter-spacing: normal;
 }
+
+.disabled,
+.disabled:hover {
+    border: #c9c9c9 solid 0.2rem;
+    color: #858585;
+    text-shadow: 1px 1px 3px #c2c2c2;
+}
