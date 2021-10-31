@@ -1,0 +1,122 @@
+html {
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 600px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.title {
+    margin-top: 1rem;
+    padding: 1rem;
+    font-family: 'Pacifico', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 200;
+    color: rgb(42, 97, 12);
+    text-shadow: 1px 1px 3px #5eff00;
+    text-align: center;
+}
+
+.generator {
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    padding: 1rem;
+    border-style: none;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: #5eff00 solid 0.2rem;
+    font-family: cambria, sans-serif;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 3px #5eff00;
+}
+
+.next {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.hide {
+    display: none;
+}
+
+.generator:hover {
+    color: rgb(68, 27, 5);
+    text-shadow: 1px 1px 3px #ff7b00;
+    border: #ff7b00 solid 0.2rem;
+}
+
+.balls {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ball {
+    width: 70px;
+    height: 70px;
+    margin: 1rem;
+    text-align: center;
+    line-height: 220%;
+    color: rgb(42, 97, 12);
+    text-shadow: 1px 1px 3px #5eff00;
+    ;
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: cambria, sans-serif;
+    border: rgb(0, 0, 0) solid 0.2rem;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px #5eff00;
+    background-color: rgb(248, 252, 6);
+}
+
+.drowning {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.results {
+    width: 75%;
+    height: 100%;
+    margin: 2rem auto;
+}
+
+.numbers {
+    color: rgb(68, 27, 5);
+    position: relative;
+    padding: .5rem .5rem .5rem 4rem;
+    margin: 1.2rem;
+    font-family: cambria, sans-serif;
+    font-size: 2rem;
+    letter-spacing: 5px;
+    text-align: right;
+    border: solid 1px rgb(231, 223, 223);
+    border-radius: 5px;
+}
+
+.counter {
+    position: absolute;
+    left: 1rem;
+    color: rgb(42, 97, 12);
+    letter-spacing: normal;
+}
+
+.disabled,
+.disabled:hover {
+    border: #c9c9c9 solid 0.2rem;
+    color: #858585;
+    text-shadow: 1px 1px 3px #c2c2c2;
+}
