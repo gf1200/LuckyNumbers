@@ -4,6 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/ThorezNS/LuckyNumbers/issues"
   },
-  "homepage": "https://github.com/ThorezNS/LuckyNumbers#readme"
+  "homepage": "https://github.com/ThorezNS/LuckyNumbers#readme",
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
 }
